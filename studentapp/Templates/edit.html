@@ -1,0 +1,233 @@
+{% extends 'layout.html' %}
+{% block body  %}
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <div class="card card-body">
+        {% for row in student %}
+        <form action="/update/{{row[0]}}" method="POST">
+          <div class="form-group">
+            <input type="text" name="idNumber" value="{{row[0]}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="name" value="{{row[1]}}" class="form-control">
+          </div>
+            <div class="form-group">
+              <select name="yearLevel" class="form-control"  id="yearLevel">
+              <option value = "{{row[3]}}" >{{row[3]}}</option>
+              <option value = 'yearLevel' >Select Year Level</option>
+                <option value="1st year">1st year</option>
+                <option value="2nd year">2nd year</option>
+                <option value="3rd year">3rd year</option>
+                <option value="4th year">4th year</option>
+              </select>
+            </div>
+          <div class="form-group">
+            <select name = 'college' class="form-control" id = 'college'>
+              <option value = "{{row[4]}}" >{{row[4]}}</option>
+              <option value = 'course' >Select Course</option>
+                  <option value="College of Engineering and Technology">College of Engineering and Technology</option>
+                  <option value="College of Science and Mathematics">College of Science and Mathematics</option>
+                  <option value="College of Computer Studies">College of Computer Studies</option>
+                  <option value="College of Education">College of Education</option>
+                   <option value="College of Arts and Social Sciences">College of Arts and Social Sciences</option>
+                  <option value="College of Business Administration and Accountancy">College of Business Administration and Accountancy</option>
+                  <option value="College of Nursing">College of Nursing</option>
+                </optgroup>
+              </select>
+          </div>
+          <div class="form-group">
+            <select name = 'department' class="form-control" id = 'department'>
+              <option value = "{{row[5]}}" >{{row[5]}}</option>
+              <option value = 'course' >Select Department</option>
+                <optgroup label="College of Engineering and Technology">
+                  <option value="Chemical Engineering and Technology Department">Chemical Engineering and Technology Department</option>
+                  <option value="Civil Engineering Department">Civil Engineering Department</option>
+                  <option value="Electrical and Electronics Engineering and Technology Department">Electrical and Electronics Engineering and Technology Department</option>
+                  <option value="Materials and Resources Engineering and Technology Department">Materials and Resources Engineering and Technology Department</option>
+                  <option value="Mechanical Engineering and Technology Department">Mechanical Engineering and Technology Department</option>
+                  <option value="COET Graduate Programs Department">COET Graduate Programs Department</option>
+                </optgroup>
+                <optgroup label="College of Science and Mathematics">
+                  <option value="Biological Sciences Department">Biological Sciences Department</option>
+                  <option value="Chemistry Department">Chemistry Department</option>
+                  <option value="Mathematics and Statistics Department">Mathematics and Statistics Department</option>
+                  <option value="Physics Department">Physics Department</option>
+                  <option value="CSM Graduate Programs Department">CSM Graduate Programs</option>
+                </optgroup>
+                <optgroup label="College of Computer Studies">
+                  <option value="Computer Science Department">Computer Science Department</option>
+                  <option value="Information Technology Department">Information Technology Department</option>
+                  <option value="Computer Applications Department">Computer Applications Department</option>
+                  <option value="CCS Graduate Programs Department">CCS Graduate Programs Department</option>
+                </optgroup>
+                <optgroup label="College of Education">
+                  <option value="Science and Mathematics Education Department ">Science and Mathematics Education Department</option>
+                  <option value="Professional Education Department">Professional Education</option>
+                  <option value="Physical Education Department">Physical Education</option>
+                  <option value="Technology Teacher Education Department">Technology Teacher Education Department</option>
+                  <option value="CED Graduate Programs Department">CED Graduate Programs Department</option>
+                </optgroup>
+                <optgroup label="College of Arts and Social Sciences">
+                  <option value="Psychology Department">Psychology Department</option>
+                  <option value="English Department">English Department</option>
+                  <option value="Departamento ng Filipino at ibang mga Wika">Departamento ng Filipino at ibang mga Wika</option>
+                  <option value="History Department">History Department</option>
+                  <option value="Political Science Department">Political Science Department</option>
+                  <option value="Sociology Department">Sociology Department</option>
+                  <option value="Philosophy and Humanities Department">Philosophy and Humanities Department</option>
+                  <option value="CASS Graduate Programs">CASS Graduate Programs</option>
+                </optgroup>
+                <optgroup label="College of Business Administration and Accountancy">
+                  <option value="Accountancy Department">Accountancy Department</option>
+                  <option value="Economics Department">Economics Department</option>
+                  <option value="Marketing Department">Marketing Department</option>
+                  <option value="Hospitality and Tourism Management Department">Hospitality and Tourism Management Department</option>
+                  <option value="CBAA Graduate Programs Department">CBAA Graduate Programs Department</option>
+                </optgroup>
+                <optgroup label="College of Nursing">
+                  <option value="Nursing Department">Nursing Department</option>
+                </optgroup>
+              </select>
+            </div>
+          <div class="form-group">
+            <select name = 'course' class="form-control" id = 'course'>
+              <option value = "{{row[6]}}" >{{row[6]}}</option>
+              <option value = 'course' >Select Course</option>
+                <optgroup label="Engineering and Technology ">
+                  <option value="Bachelor of Science in Chemical Engineering">Bachelor of Science in Chemical Engineering</option>
+                  <option value="Bachelor of Science in Civil Engineering">Bachelor of Science in Civil Engineering</option>
+                  <option value="Bachelor of Science in Electrical and Communications Engineering">Bachelor of Science in Electrical and Communications Engineering</option>
+                  <option value="Bachelor of Science in Ceramics Engineering">Bachelor of Science in Ceramics Engineering</option>
+                  <option value="Bachelor of Science in Metallurgical Engineering">Bachelor of Science in Metallurgical Engineering</option>
+                  <option value="Bachelor of Science in Mechanical Engineering">Bachelor of Science in Mechanical Engineering</option>
+                  <option value="Master of Science in Civil Engineering">Master of Science in Civil Engineering</option>
+                  <option value="Master of Science in Mechanical Engineering">Master of Science in Mechanical Engineering</option>
+                  <option value="Master of Science in Electrical Engineering">Master of Science in Electrical Engineering</option>
+                  <option value="Master of Engineering">Master of Engineering</option>
+                  <option value="Doctor of Engineering">Doctor of Engineering</option>
+                </optgroup>
+                <optgroup label="Sciences and Mathematics">
+                  <option value="Bachelor of Science in Biology(General)">Bachelor of Science in Biology(General)</option>
+                  <option value="Bachelor of Science in Biology(Botany)">Bachelor of Science in Biology(Botany)</option>
+                  <option value="Bachelor of Science in Biology(Marine Biology)">Bachelor of Science in Biology(Marine Biology)</option>
+                  <option value="Bachelor of Science in Biology(Zoology)">Bachelor of Science in Biology(Zoology)</option>
+                  <option value="Bachelor of Science in Chemistry">Bachelor of Science in Chemistry</option>
+                  <option value="Bachelor of Science in Mathematics">Bachelor of Science in Mathematics</option>
+                  <option value="Bachelor of Science ing Statistics">Bachelor of Science ing Statistics</option>
+                  <option value="Bachelor of Science in Physics">Bachelor of Science in Physics</option>
+                  <option value="Certificate in Physics">Certificate in Physics</option>
+                  <option value="Master of Biology">Master of Biology</option>
+                  <option value="Master in Chemistry">Master in Chemistry</option>
+                  <option value="Master of Science in Mathematics">Master of Science in Mathematics</option>
+                  <option value="Doctor in Mathematics">Doctor in Mathematics</option>
+                  <option value="Master of Mathematics">Master of Mathematics</option>
+                  <option value="Master of Science in Statistics">Master of Science in Statistics</option>
+                  <option value="Master in Applied Statistics">Master in Applied Statistics</option>
+                  <option value="Master of Physics">Master of Physics</option>
+                  <option value="Master of Science in Chemistry">Master of Science in Chemistry</option>
+                  <option value="Master of Science in Physics">Master of Science in Physics</option>
+                  <option value="Doctor of Philosophy in Biology">Doctor of Philosophy in Biology</option>
+                  <option value="Doctor of Philosophy in Chemistry">Doctor of Philosophy in Chemistry</option>
+                  <option value="Doctor of Philosophy in Mathematics">Doctor of Philosophy in Mathematics</option>
+                  <option value="Doctor of Philosophy in Physics">Doctor of Philosophy in Physics</option>
+                
+                <optgroup label="Computer Studies">
+                  <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+                  <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
+                  <option value="Bachelor of Science in Information System">Bachelor of Science in Information System</option>
+                  <option value="Bachelor of Science in Computer Applications">Bachelor of Science in Computer Applications</option>
+                  <option value="Master of Science in Computer Applications">Master of Science in Computer Applications</option>
+                </optgroup>
+                
+                <optgroup label="Sciences and Mathematics Education">
+                  <option value="Bachelor of Elementary Education Science and Mathematics">Bachelor of Elementary Education Science and Mathematics</option>
+                  <option value="Bachelor of Secondary Education Biology">Bachelor of Secondary Education Biology</option>
+                  <option value="Bachelor of Secondary Education Chemistry">Bachelor of Secondary Education Chemistry</option>
+                  <option value="Bachelor of Secondary Education Physics">Bachelor of Secondary Education Physics</option>
+                  <option value="Bachelor of Secondary Education Mathematics">Bachelor of Secondary Education Mathematics</option>
+                  <option value="Bachelor of Elementary Education - Language Education">Bachelor of Elementary Education - Language Education</option>
+                  <option value="Bachelor of Secondary Education Filipino">Bachelor of Secondary Education Filipino</option>
+                  <option value="Certificate in Professional Teaching">Certificate in Professional Teaching</option>
+                  <option value="Bachelor of Physical Education">Bachelor of Physical Education</option>
+                  <option value="Ph.D. in Science Education in Chemistry">Ph.D. in Science Education in Chemistry</option>
+                  <option value="Master of Science in Physical Education">Master of Science in Physical Education</option>
+                  <option value="Master of Arts in Education (Reading)">Master of Arts in Education (Reading)</option>
+                  <option value="Master of Arts in Education (Guidance and Counseling)">Master of Arts in Education (Guidance and Counseling)</option>
+                  <option value="Master of Science Education in Biology">Master of Science Education in Biology</option>
+                  <option value="Master of Science Education in Chemistry">Master of Science Education in Chemistry</option>
+                  <option value="Master of Science Education in Physics">Master of Science Education in Physics</option>
+                  <option value="Master of Science Education in Elementary Mathematics">Master of Science Education in Elementary Mathematics</option>
+                  <option value="Master of Science Education in Secondary Mathematics">Master of Science Education in Secondary Mathematics</option>
+                  <option value="Master of Science Education in General Science">Master of Science Education in General Science</option>
+
+                <optgroup label="Technology Teacher Education">
+                  <option value="Bachelor of Technology and Livelihood Education major in Home Economics">Bachelor of Technology and Livelihood Education major in Home Economics</option>
+                  <option value="Bachelor of Technical-Vocational Teacher Education major in Drafting Technology">Bachelor of Technical-Vocational Teacher Education major in Drafting Technology</option>
+                  <option value="Bachelor of Technology and Livelihood Education major in Industrial Arts (BTLED-Industrial Arts">Bachelor of Technology and Livelihood Education major in Industrial Arts (BTLED-Industrial Arts</option>
+                </optgroup>
+
+                <optgroup label="Psychology">
+                  <option value="Bachelor of Science in Psychology">Bachelor of Science in Psychology</option>
+                </optgroup>
+
+                <optgroup label="English and Filipino ">
+                  <option value="Bachelor of Arts in English">Bachelor of Arts in English</option>
+                  <option value="Bachelor of Arts in Filipino & Other Languages">Bachelor of Arts in Filipino & Other Languages</option>
+                  <option value="Doctor of Philosophy in Filipino">Doctor of Philosophy in Filipino</option>
+                  <option value="Master of Arts in Filipino">Master of Arts in Filipino</option>
+                  <option value="Master of Filipino">Master of Filipino</option>
+                  <option value="Master in English Language Studies (Non-Thesis Program)">Master in English Language Studies (Non-Thesis Program)</option>
+                  <option value="Master of Arts in English Language Studies">Master of Arts in English Language Studies</option>
+                </optgroup>
+
+                <optgroup label="History">
+                  <option value="Bachelor of Arts in History">Bachelor of Arts in History</option>
+                  <option value="Master in History">Master in History</option>
+                </optgroup>
+                <optgroup label="Political Science ">
+                  <option value="Bachelor of Arts in Political Science">Bachelor of Arts in Political Science</option>
+                </optgroup>
+                <optgroup label="Sociology ">
+                  <option value="Bachelor of Arts in Sociology">Bachelor of Arts in Sociology</option>
+                  <option value="Master of Arts in Sociology">Master of Arts in Sociology</option> 
+                  <option value="Master in Sociology">Master in Sociology</option>
+                </optgroup>
+                <optgroup label="Philosophy and Humanities ">
+                  <option value="Bachelor of Arts in Philosophy">Bachelor of Arts in Philosophy</option>
+                  <option value="Doctor of Philosophy in Language Studies">Doctor of Philosophy in Language Studies</option>
+                </optgroup>
+
+                <optgroup label="Accountancy, Business and Marketing">
+                  <option value="Bachelor of Science in Accountancy">Bachelor of Science in Accountancy</option>
+                  <option value="Bachelor of Science in Business Administration major in Marketing Management">Bachelor of Science in Business Administration major in Marketing Management</option>
+                  <option value="Bachelor of Science major in Entrepreneurship">Bachelor of Science major in Entrepreneurship</option>
+                  <option value="Master in Business Administration (MBA)">Master in Business Administration (MBA)</option>
+                  <option value="Doctor in Business Administration">Doctor in Business Administration</option>
+                
+                <optgroup label="Economics">
+                  <option value="Bachelor of Science in Economics">Bachelor of Science in Economics</option>
+                  <option value="Bachelor of Science in Business Administration major in Business Economic">Bachelor of Science in Business Administration major in Business Economic</option>
+                </optgroup>
+                <optgroup label="Hospitality and Tourism Management">
+                  <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in Hospitality Management</option>
+                </optgroup>
+                <optgroup label="Nursing">
+                  <option value="Bachelor of Science in Nursing">Bachelor of Science in Nursing</option>
+                </optgroup>
+              </select>
+
+
+            </div>
+        {% endfor %}
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Update
+            </button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock  %}
